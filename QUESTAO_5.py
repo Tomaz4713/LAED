@@ -1,5 +1,6 @@
 #QUESTÃO 05
 
+#LETRA A
 import random
 
 def criar_vet(tam,lim_i,lim_s):
@@ -45,3 +46,55 @@ lim_s = (int(input("Até:")))
 vetor = criar_vet(tam,lim_i,lim_s)
 print(f"\nVetor = {vetor}")
 dobro_do_outro(tam,vetor)
+
+#LETRA B
+import random
+
+def criar_vet(tam,lim_i,lim_s):
+	vetor = [0] * tam
+
+	for i in range(tam):
+		vetor[i] = random.randint(lim_i,lim_s)
+
+	return vetor
+
+def dobro_do_outro_ordenado(tam,vetor):
+	num = []
+	dobro = []
+
+	for i in range(tam):
+		igual = None
+		
+		for j in range(i + 1, tam):
+			for k in range(len(num)):
+				if vetor[i] == num[k]:
+					igual = 1
+					break
+		
+			if igual != None:
+				break
+			
+			else:
+				if vetor[j] == 2 * vetor[i]:
+					dobro.append(vetor[j])
+					num.append(vetor[i])
+					break
+				
+				elif vetor[j] > 2 * vetor[i]:
+					break
+
+	if not dobro:
+		print("\nNão há nenhum número que seja o dobro do outro nesse vetor!")
+	else:
+		print("\nOs números que representam o dobro de outro número no mesmo vetor, são:")
+		for i in range(len(dobro)):
+			print(f"\n'{dobro[i]}' que é o dobro de '{num[i]}'")
+
+tam = (int(input("Tamanho do vetor: ")))
+lim_i = (int(input("Randomizar de:")))
+lim_s = (int(input("Até:")))
+
+vetor = criar_vet(tam,lim_i,lim_s)
+vetor.sort()
+print(f"\nVetor Ordenado = {vetor}")
+dobro_do_outro_ordenado(tam,vetor)
