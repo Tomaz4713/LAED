@@ -1,4 +1,4 @@
-#QUESTÃO_1
+#QUESTÃO 01
 
 import random
 
