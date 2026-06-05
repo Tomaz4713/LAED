@@ -1,0 +1,5 @@
+#QUESTÃO 02
+
+#A) Sim, a lista estará completamente ordenada ao final do processo. Isso acontece porque a primeira ordenação dos primeiros 2n/3 elementos reorganiza a porção inicial; a segunda ordenação dos últimos 2n/3 elementos garante que os maiores elementos de toda a lista sejam empurrados de forma definitiva para o terço final da lista (as últimas n/3 posições); por fim, a terceira ordenação aplicada novamente sobre os primeiros 2n/3 elementos ajusta e garante que todos os elementos menores e médios fiquem perfeitamente alinhados, completando a ordenação total.
+
+#B) O tempo de execução desse procedimento é quadrático, ou seja, O(n^2). O algoritmo realiza exatamente três chamadas consecutivas do algoritmo da bolha sobre sublistas que possuem o tamanho de 2n/3 elementos. Sabendo que o algoritmo da bolha consome um tempo quadrático de O(m^2) para ordenar uma estrutura de tamanho m, cada uma das três etapas gastará um tempo proporcional a O((2n/3)^2), o que equivale a O(n^2). Somando as três execuções independentes, o tempo de execução total do procedimento mantém-se estritamente na ordem de O(n^2).
