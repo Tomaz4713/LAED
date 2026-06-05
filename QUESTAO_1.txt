@@ -1,0 +1,5 @@
+#QUESTÃO 01
+
+#A) No melhor caso, a partição divide a lista de forma perfeita e equilibrada ao meio, gerando duas sublistas de tamanho n/2 que já se encontram ordenadas. O procedimento de partição consome tempo linear O(n) e o algoritmo da bolha (em sua versão otimizada com flag) gasta tempo O(n/2) para checar cada lado, resultando em um tempo de execução total linear de O(n).
+
+#B) No pior caso, a partição é completamente desbalanceada, isolando o pivô na ponta e gerando uma sublista restante de tamanho n-1 em ordem totalmente inversa. O procedimento de partição gasta tempo O(n) e o algoritmo da bolha executará o seu número máximo de comparações e trocas nesta sublista restante, resultando em um tempo de execução total quadrático de O(n^2).
