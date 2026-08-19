@@ -1,0 +1,16 @@
+#QUESTÃO 01
+
+#LETRA A
+#Estado da pilha após executar Push(topo, 99) e depois Push(topo, 3):
+#
+#   topo ──> [ 3 | • ] ──> [ 99 | • ] ──> [ 42 | • ] ──> [ 17 | • ] ──> [ 5 | / ]
+
+#LETRA B
+#1º Pop: removeu o valor 3
+#   Estado: topo ──> [ 99 | • ] ──> [ 42 | • ] ──> [ 17 | • ] ──> [ 5 | / ]
+#
+#2º Pop: removeu o valor 99
+#   Estado: topo ──> [ 42 | • ] ──> [ 17 | • ] ──> [ 5 | / ]
+
+#LETRA C
+#O Pop deve salvar a referência do nó a ser removido em uma variável auxiliar porque, caso o nó fosse desalocado da memória imediatamente antes de atualizar o ponteiro topo, o acesso ao endereço do próximo elemento (topo.prox) se tornaria inválido (acesso a memória liberada/dangling pointer), perdendo a referência de toda a cadeia restante da pilha. Da mesma forma, se o ponteiro topo for apenas avançado sem guardar a referência do nó antigo, ocorre vazamento de memória (memory leak).
