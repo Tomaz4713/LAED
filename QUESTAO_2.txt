@@ -1,0 +1,14 @@
+#QUESTÃO 02
+
+#LETRA A
+#Estado resultante da fila após inserir os valores 7 e 11:
+#
+#   inicio ──> [ 8 | • ] ──> [ 15 | • ] ──> [ 23 | • ] ──> [ 7 | • ] ──> [ 11 | / ] <── fim
+
+#LETRA B
+#Estado resultante após realizar dois Dequeue (remoção dos elementos 8 e 15):
+#
+#   inicio ──> [ 23 | • ] ──> [ 7 | • ] ──> [ 11 | / ] <── fim
+
+#LETRA C
+#Quando a última remoção esvazia a fila, o ponteiro inicio é atualizado para None e o ponteiro fim também deve ser explicitamente atualizado para None. Caso apenas o ponteiro inicio seja zerado e o ponteiro fim continue apontando para o nó removido, fim se torna um ponteiro inválido (dangling pointer). Com isso, uma inserção posterior que cheque a condição de fila vazia via fim ou tente encadear a partir dele causará corrupção de memória ou falha na lógica de encadeamento.
