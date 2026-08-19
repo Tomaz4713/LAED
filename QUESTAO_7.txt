@@ -1,0 +1,62 @@
+#QUESTÃO 07
+
+#LETRA A
+#O Radix Sort depende obrigatoriamente da propriedade de estabilidade para manter a ordenação relativa alcançada nas passagens dos dígitos anteriores. O uso de filas garante a estabilidade por operar em FIFO. Caso as filas fossem substituídas por pilhas (comportamento LIFO), os elementos que colidissem no mesmo dígito teriam sua ordem relativa completamente invertida durante o processo de coleta, destruindo a ordenação prévia.
+#
+#Contra-exemplo: Considere a lista inicial [14, 12, 17]:
+#1. Passagem 1 (unidades):
+#   - 12 vai para a pilha 2, 14 vai para a pilha 4, 17 vai para a pilha 7.
+#   - Desempilhando na ordem dos baldes: lista intermediária = [12, 14, 17].
+#2. Passagem 2 (dezenas):
+#   - Todos possuem o dígito de dezena 1.
+#   - Empilhando na pilha 1: primeiro 12, depois 14, depois 17 (topo = 17).
+#   - Ao desempilhar da pilha 1 para coletar: a lista final se torna [17, 14, 12], resultando em uma sequência incorreta e desordenada.
+
+#LETRA B
+#Rastreamento para a sequência: 481, 329, 143, 612, 937, 480, 256
+#
+#1ª PASSAGEM (Dígito menos significativo - Unidades):
+#   Fila 0: [480]
+#   Fila 1: [481]
+#   Fila 2: [612]
+#   Fila 3: [143]
+#   Fila 4: []
+#   Fila 5: []
+#   Fila 6: [256]
+#   Fila 7: [937]
+#   Fila 8: []
+#   Fila 9: [329]
+#   Sequência coletada: 480, 481, 612, 143, 256, 937, 329
+#
+#2ª PASSAGEM (Dígito do meio - Dezenas):
+#   Fila 0: []
+#   Fila 1: [612]
+#   Fila 2: [329]
+#   Fila 3: [937]
+#   Fila 4: [143]
+#   Fila 5: [256]
+#   Fila 6: []
+#   Fila 7: []
+#   Fila 8: [480, 481]
+#   Fila 9: []
+#   Sequência coletada: 612, 329, 937, 143, 256, 480, 481
+#
+#3ª PASSAGEM (Dígito mais significativo - Centenas):
+#   Fila 0: []
+#   Fila 1: [143]
+#   Fila 2: [256]
+#   Fila 3: [329]
+#   Fila 4: [480, 481]
+#   Fila 5: []
+#   Fila 6: [612]
+#   Fila 7: []
+#   Fila 8: []
+#   Fila 9: [937]
+#   Sequência final coletada: 143, 256, 329, 480, 481, 612, 937
+
+#LETRA C
+#Para ordenar n strings de comprimento fixo l sobre um alfabeto de tamanho sigma:
+#1. Complexidade do Radix Sort: O algoritmo realiza l passagens estáveis, e cada passagem processa todos os n elementos distribuindo e coletando em sigma baldes com custo O(n + sigma). A complexidade total de tempo é de O(l * (n + sigma)).
+#2. Complexidade do Merge Sort: O Merge Sort executa O(n * log n) comparações de chaves. Como a comparação entre duas strings de tamanho l pode exigir até l verificações de caracteres no pior caso, o tempo total de execução é de O(l * n * log n).
+#
+#Comparação: Quando o número de strings n é grande e o tamanho do alfabeto sigma é pequeno/moderado em relação a n, o Radix Sort é assintoticamente superior por ter tempo linear em n (O(l * n)), enquanto o Merge Sort possui complexidade superlinear de O(l * n * log n).
