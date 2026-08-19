@@ -1,0 +1,45 @@
+#QUESTÃO 04
+
+#LETRA A
+#A estrutura de cada nó da pilha encadeada deve conter três campos:
+#1. valor: armazena o número inserido na pilha.
+#2. min_atual: armazena o menor valor presente na pilha desde a base até o nó em questão.
+#3. prox: ponteiro que aponta para o nó logo abaixo dele na pilha.
+
+#LETRA B
+#Pseudocódigos:
+#
+#procedimento Push(pilha, x):
+#    se pilha.topo == None entao:
+#        menor = x
+#    senao:
+#        se x < pilha.topo.min_atual entao:
+#            menor = x
+#        senao:
+#            menor = pilha.topo.min_atual
+#    novo = AlocarNo(valor = x, min_atual = menor, prox = pilha.topo)
+#    pilha.topo = novo
+#
+#funcao Pop(pilha):
+#    se pilha.topo == None entao:
+#        erro("Pilha Vazia")
+#    no_removido = pilha.topo
+#    pilha.topo = pilha.topo.prox
+#    retornar no_removido.valor
+#
+#funcao Min(pilha):
+#    se pilha.topo == None entao:
+#        erro("Pilha Vazia")
+#    retornar pilha.topo.min_atual
+
+#LETRA C
+#Rastreamento passo a passo:
+#1. Push(5) -> Nó(5, min=5).                  Pilha: [5|5]                            -> Mínimo = 5
+#2. Push(3) -> Nó(3, min=min(3,5)=3).         Pilha: [3|3] -> [5|5]                   -> Mínimo = 3
+#3. Push(7) -> Nó(7, min=min(7,3)=3).         Pilha: [7|3] -> [3|3] -> [5|5]          -> Mínimo = 3
+#4. Push(1) -> Nó(1, min=min(1,3)=1).         Pilha: [1|1] -> [7|3] -> [3|3] -> [5|5] -> Mínimo = 1
+#5. Pop()   -> Remove o nó [1|1].             Pilha: [7|3] -> [3|3] -> [5|5]          -> Mínimo = 3
+#6. Min()   -> Consulta topo.min_atual.       Pilha: [7|3] -> [3|3] -> [5|5]          -> Retorna 3
+
+#LETRA D
+#O custo extra de memória por nó consiste apenas no campo numérico adicional min_atual, que ocupa O(1) de espaço por elemento. Para uma pilha encadeada contendo n elementos, o custo de memória extra total é linear de O(n).
