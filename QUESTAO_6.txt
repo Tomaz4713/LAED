@@ -1,0 +1,44 @@
+#QUESTÃO 06
+
+#LETRA A
+#Pseudocódigos:
+#
+#procedimento Enqueue(Fila, x):
+#    Push(Fila.P1, x)
+#
+#funcao Dequeue(Fila):
+#    se PilhaVazia(Fila.P2) entao:
+#        se PilhaVazia(Fila.P1) entao:
+#            erro("Fila Vazia")
+#        enquanto PilhaNaoVazia(Fila.P1) faca:
+#            x = Pop(Fila.P1)
+#            Push(Fila.P2, x)
+#    retornar Pop(Fila.P2)
+
+#LETRA B
+#Definimos a função de potencial Phi = número de elementos em P1 (onde Phi >= 0 e Phi_0 = 0).
+#
+#1. Operação Enqueue:
+#   - Custo real: c = 1 (empilhar em P1).
+#   - Variação de potencial: Delta_Phi = Phi_i - Phi_{i-1} = 1.
+#   - Custo amortizado: c_amort = c + Delta_Phi = 1 + 1 = 2 = O(1).
+#
+#2. Operação Dequeue:
+#   - Caso 1 (P2 contém elementos):
+#     - Custo real: c = 1 (desempilhar de P2).
+#     - Variação de potencial: Delta_Phi = 0.
+#     - Custo amortizado: c_amort = 1 + 0 = 1 = O(1).
+#   - Caso 2 (P2 vazia e P1 possui k elementos):
+#     - Custo real: c = 2k + 1 (k desempilhamentos em P1 + k empilhamentos em P2 + 1 desempilhamento em P2).
+#     - Se definirmos cada transferência com peso 2 no potencial (Phi = 2 * |P1|), temos Delta_Phi = -2k.
+#     - Custo amortizado: c_amort = (2k + 1) + (-2k) = 1 = O(1).
+#
+#Portanto, o custo amortizado de qualquer sequência de operações Dequeue é O(1).
+
+#LETRA C
+#Sim, a transferência de P1 para P2 preserva rigorosamente a propriedade FIFO. Quando inserimos elementos em P1, a sua ordem é invertida pelo comportamento LIFO da pilha. Ao transferir todos os elementos desempilhando de P1 e empilhando em P2, a sequência sofre uma segunda inversão, restabelecendo a ordem original de chegada.
+#Exemplo: Inserindo 1, 2 e 3 na fila:
+#   P1 = [3, 2, 1] (com 3 no topo). P2 = [].
+#   Na primeira chamada de Dequeue, todos os nós são descarregados para P2:
+#   P1 fica [] e P2 se torna [1, 2, 3] (com 1 no topo).
+#   O desempilhamento de P2 remove o elemento 1, que foi o primeiro elemento enfileirado.
